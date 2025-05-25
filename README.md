@@ -22,8 +22,6 @@ This project showcases my ability to rapidly develop a data-driven application i
 *   **Country-Specific Statistics:** Users can select a country from a dropdown to view detailed statistics for that nation.
 *   **Interactive Map Visualization:** A Leaflet map dynamically displays data for each country, with circle sizes proportional to the selected metric (cases, recovered, or deaths).
 *   **Data-Rich Popups:** Clicking on a country on the map or table reveals detailed statistics and the country's flag.
-*   **Historical Data Trends:** A line graph visualizes the trend of new cases, recoveries, or deaths over the last 120 days for the selected country or worldwide.
-*   **Sortable Data Table:** A table lists countries with their total cases, sortable for easy comparison.
 
 ## Data Analysis & Insights
 
