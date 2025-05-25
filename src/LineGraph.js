@@ -3,11 +3,11 @@ import { Line } from 'react-chartjs-2';
 import numeral from 'numeral';
 
 const options = {
-    legend : {
+    legend: {
         display: false,
     },
     elements: {
-        points: {
+        point: {
             radius: 0,
         },
     },
@@ -16,35 +16,35 @@ const options = {
         mode: "index",
         intersect: false,
         callbacks: {
-            label: function (tooltipItem, data){
-                return numeral (tooltipItem.value).format("+0,0");
-                },
+            label: function (tooltipItem, data) {
+                return numeral(tooltipItem.value).format("+0,0");
             },
         },
-        scales:{
-            xAxes:[
-                {
-                    type: 'time',
-                    time: {
-                        format: 'MM/DD/YY',
-                        tooltipFormat: 'll',
-                    },
-                }
-            ],
-            yAxes:[
-                {gridlines: {
+    },
+    scales: {
+        xAxes: [
+            {
+                type: "time",
+                time: {
+                    parser: "MM/DD/YY",
+                    tooltipFormat: "ll",
+                },
+            },
+        ],
+        yAxes: [
+            {
+                gridLines: {
                     display: false,
                 },
-                ticks:{
-                    //include a dollar sign in the tick
-                    callback: function(value, index, values){
-                        return numeral(value).format('0a');
+                ticks: {
+                    callback: function(value, index, values) {
+                        return numeral(value).format("0a");
                     },
                 },
-             },
-            ],
-        },
-}
+            },
+        ],
+    },
+};
 
 const buildChartData = (data, casesType) =>{
     let chartData = [];
@@ -86,7 +86,7 @@ function LineGraph({ casesType, ...props }) {
     return (
         <div className={props.className}>
             
-            {data?.length > 0 && (
+            {data && data.length > 0 && (
                 <Line 
                 options={options}
                 data ={{
@@ -97,8 +97,6 @@ function LineGraph({ casesType, ...props }) {
                      },
                     ],
                 }}/>
-
-
             )}
             
         </div>

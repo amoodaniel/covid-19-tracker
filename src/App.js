@@ -56,7 +56,7 @@ useEffect(() =>{
     setCountry(countryCode);
 
     const url =
-      countryCode == 'worldwide' ? 
+      countryCode === 'worldwide' ? 
       'https://disease.sh/v3/covid-19/all' :
       `https://disease.sh/v3/covid-19/countries/${countryCode}`;
      fetch(url)
@@ -66,8 +66,10 @@ useEffect(() =>{
         //all of the data from the country response
         setCountryInfo(data);
 
-        setMapCenter([data.countryInfo.lat, data.countryInfo.long]);
-        setMapZoom(4);
+        if (data.countryInfo) {
+          setMapCenter({ lat: data.countryInfo.lat, lng: data.countryInfo.long });
+          setMapZoom(4);
+        }
     });
 
   };
@@ -83,7 +85,7 @@ useEffect(() =>{
               <MenuItem value="worldwide">Worldwide</MenuItem>
                 {
                 countries.map((country) =>(
-                  <MenuItem value={country.value}>{country.name}</MenuItem>
+                  <MenuItem key={country.value} value={country.value}>{country.name}</MenuItem>
                 ))}
                 
               </Select>
